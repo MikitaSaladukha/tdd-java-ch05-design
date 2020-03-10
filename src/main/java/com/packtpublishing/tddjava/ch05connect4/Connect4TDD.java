@@ -1,7 +1,10 @@
 package com.packtpublishing.tddjava.ch05connect4;
 
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
+import java.util.Scanner;
 import java.util.StringJoiner;
 import java.util.regex.Pattern;
 import java.util.stream.IntStream;
@@ -137,4 +140,23 @@ public class Connect4TDD {
             }
         }
     }
+
+    public static void main(String[] args) {
+
+
+        Scanner scanner = new Scanner(System.in);
+        PrintStream ps = new PrintStream(System.out);
+        Connect4TDD game = new Connect4TDD(ps);
+        while (!game.isFinished()) {
+            System.out.println("Where do the next disc should be placed?");
+            game.putDiscInColumn(scanner.nextInt());
+            if (!game.winner.isEmpty()){
+                System.out.println("Winner is "+game.getWinner());
+                break;
+            }
+        }
+    }
+
+
+
 }
